@@ -43,8 +43,11 @@ export default function About() {
             transition={{ duration: 0.5, delay: 0.05 }}
             className="space-y-2.5 text-zinc-500 leading-relaxed text-sm"
           >
+            <p className="text-base text-zinc-800 font-medium leading-snug">
+              I&apos;m a student at USC studying Economics and Data Science.
+            </p>
             <p>
-              I&apos;m a student at USC studying Economics and Data Science. I got into product because I love the full picture of how something gets built and why it matters. I got into data because it tells the story. The overlap between the two is what keeps me genuinely excited.
+              I got into product because I love the full picture of how something gets built and why it matters. I got into data because it tells the story. The overlap between the two is what keeps me genuinely excited.
             </p>
             <p>
               Right now I&apos;m working on something of my own in the fintech space, which is keeping me busy in the best way.

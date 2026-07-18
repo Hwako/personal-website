@@ -7,12 +7,16 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CursorSpotlight from "@/components/CursorSpotlight";
 import ScrollProgress from "@/components/ScrollProgress";
+import CustomCursor from "@/components/CustomCursor";
+import SectionDots from "@/components/SectionDots";
 
 export default function Home() {
   return (
     <>
       <ScrollProgress />
       <CursorSpotlight />
+      <CustomCursor />
+      <SectionDots />
       <Navbar />
       <main>
         <Hero />

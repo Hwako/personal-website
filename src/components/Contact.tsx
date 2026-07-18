@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, ArrowUpRight } from "lucide-react";
+import { Mail, ArrowUpRight, ArrowDown } from "lucide-react";
+import MagneticLink from "./MagneticLink";
 
 function GitHubIcon({ size = 18 }: { size?: number }) {
   return (
@@ -19,6 +20,14 @@ function LinkedInIcon({ size = 18 }: { size?: number }) {
   );
 }
 
+function TwitterIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
 const socials = [
   {
     label: "GitHub",
@@ -31,6 +40,12 @@ const socials = [
     href: "https://linkedin.com/in/hwako1",
     Icon: LinkedInIcon,
     handle: "hwako1",
+  },
+  {
+    label: "Twitter",
+    href: "https://twitter.com/1pluswako",
+    Icon: TwitterIcon,
+    handle: "@1pluswako",
   },
   {
     label: "Email",
@@ -55,45 +70,61 @@ export default function Contact() {
           viewport={{ once: true, margin: "-60px" }}
           variants={fadeUp}
           transition={{ duration: 0.5 }}
-          className="mb-8"
+          className="mb-12"
         >
           <p className="text-zinc-400 font-mono text-xs tracking-widest uppercase mb-3">
             / contact
           </p>
-          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-            Let&apos;s connect.
-          </h2>
+          <MagneticLink
+            href="mailto:hwako@usc.edu"
+            data-cursor-text="Say hi"
+            strength={0.15}
+            className="group inline-block text-5xl sm:text-6xl md:text-7xl font-bold text-zinc-900 tracking-tight leading-none hover:text-zinc-500 transition-colors"
+          >
+            Let&apos;s talk
+            <span className="text-zinc-300 group-hover:text-zinc-400 transition-colors">.</span>
+          </MagneticLink>
+          <p className="mt-4 text-zinc-400 text-sm flex items-center gap-1.5">
+            <ArrowDown size={13} className="animate-bounce" />
+            or find me below
+          </p>
         </motion.div>
 
         <div className="space-y-0">
           {socials.map((social, i) => (
-            <motion.a
+            <motion.div
               key={social.label}
-              href={social.href}
-              target={social.href.startsWith("mailto") ? undefined : "_blank"}
-              rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, delay: i * 0.07 }}
-              className="group flex items-center justify-between py-4 border-b border-zinc-200 first:border-t hover:pl-1 transition-all duration-200"
+              className="border-b border-zinc-200 first:border-t"
             >
-              <div className="flex items-center gap-4">
-                <div className="text-zinc-400 group-hover:text-zinc-900 transition-colors">
-                  <social.Icon size={16} />
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-zinc-800 group-hover:text-zinc-900 transition-colors">
-                    {social.label}
+              <MagneticLink
+                href={social.href}
+                target={social.href.startsWith("mailto") ? undefined : "_blank"}
+                rel={social.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                strength={0.25}
+                data-cursor-text="Open"
+                className="group flex items-center justify-between py-4 hover:pl-1 transition-all duration-200"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:bg-zinc-900 group-hover:border-zinc-900 group-hover:text-white transition-colors">
+                    <social.Icon size={16} />
                   </div>
-                  <div className="text-xs text-zinc-400 font-mono">{social.handle}</div>
+                  <div>
+                    <div className="text-sm font-medium text-zinc-800 group-hover:text-zinc-900 transition-colors">
+                      {social.label}
+                    </div>
+                    <div className="text-xs text-zinc-400 font-mono">{social.handle}</div>
+                  </div>
                 </div>
-              </div>
-              <ArrowUpRight
-                size={15}
-                className="text-zinc-300 group-hover:text-zinc-700 transition-colors"
-              />
-            </motion.a>
+                <ArrowUpRight
+                  size={15}
+                  className="text-zinc-300 group-hover:text-zinc-700 transition-colors"
+                />
+              </MagneticLink>
+            </motion.div>
           ))}
         </div>
       </div>

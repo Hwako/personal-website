@@ -102,9 +102,10 @@ export default function Experience() {
               viewport={{ once: true, margin: "-40px" }}
               variants={fadeUp}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="group py-4 border-b border-zinc-200 first:border-t"
+              className="group relative py-4 border-b border-zinc-200 first:border-t"
             >
-              <div className="flex items-start gap-3.5">
+              <span className="absolute left-[17px] top-0 bottom-0 w-px bg-zinc-200 z-0" aria-hidden />
+              <div className="relative z-10 flex items-start gap-3.5">
                 <CompanyLogo
                   logo={exp.logo}
                   name={exp.company}

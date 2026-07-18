@@ -1,20 +1,48 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import dynamic from "next/dynamic";
+import { motion, useScroll, useTransform } from "framer-motion";
+
+const HeroConstellation = dynamic(() => import("./HeroConstellation"), {
+  ssr: false,
+});
+
+function AnimatedName({ text }: { text: string }) {
+  return (
+    <>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          className="inline-block"
+          whileHover={{ y: -10, scale: 1.15, color: "#71717a" }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          {char === " " ? " " : char}
+        </motion.span>
+      ))}
+    </>
+  );
+}
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const photoY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+
   return (
     <section
+      ref={sectionRef}
       className="relative min-h-screen flex items-end md:items-center px-6 md:px-16 overflow-hidden"
       style={{ backgroundColor: "#fafaf9" }}
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{ backgroundImage: "url('/hero-bg.jpg')", backgroundPosition: "30% center" }}
-      />
+      {/* 3D constellation background */}
+      <HeroConstellation />
       {/* Overlay — heavier on the right so text pops, transparent on the left so the photo blends */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#fafaf9]/30 to-[#fafaf9]/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#fafaf9]/10 to-[#fafaf9]/60" />
       {/* Bottom fade for smooth section transition */}
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#fafaf9] to-transparent" />
 
@@ -27,7 +55,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.1 }}
           className="shrink-0 w-48 h-64 md:w-56 md:h-72 rounded-2xl overflow-hidden shadow-2xl ring-1 ring-white/20"
-          style={{ alignSelf: "flex-end" }}
+          style={{ alignSelf: "flex-end", y: photoY }}
         >
           <img
             src="/photo.jpg"
@@ -53,7 +81,7 @@ export default function Hero() {
             transition={{ duration: 0.65, delay: 0.2 }}
             className="text-[58px] md:text-[88px] font-bold text-zinc-900 leading-[0.95] tracking-tight mb-5 drop-shadow-[0_2px_32px_rgba(250,250,249,1)]"
           >
-            Hamza Wako.
+            <AnimatedName text="Hamza Wako." />
           </motion.h1>
 
           {/* School + location */}

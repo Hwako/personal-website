@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,12 +25,14 @@ export default function Navbar() {
       }`}
     >
       <nav className="w-full px-6 md:px-10 h-16 flex items-center justify-between">
-        <a
+        <motion.a
           href="#"
-          className="text-zinc-900 font-bold text-base tracking-tight hover:text-zinc-500 transition-colors font-mono"
+          whileHover={{ rotate: [0, -8, 8, -6, 6, 0] }}
+          transition={{ duration: 0.4 }}
+          className="inline-block opacity-90 hover:opacity-70 transition-opacity"
         >
-          HW
-        </a>
+          <Image src="/logo.svg" alt="Hamza Wako" width={36} height={36} className="rounded-full" />
+        </motion.a>
         <div className="flex items-center gap-2 text-sm text-zinc-600">
           {["About", "Experience", "Projects", "Contact"].map((item) => (
             <a
