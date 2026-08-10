@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 const projects = [
@@ -13,6 +14,7 @@ const projects = [
     github: "https://github.com/Hwako/Minara",
     live: null,
     award: null,
+    preview: "/minara-preview.jpg",
   },
   {
     title: "SignSpace",
@@ -49,6 +51,40 @@ const cardFade = {
   visible: { opacity: 1, scale: 1 },
 };
 
+function HoverPreview({
+  src,
+  x,
+  y,
+  visible,
+}: {
+  src: string;
+  x: ReturnType<typeof useMotionValue<number>>;
+  y: ReturnType<typeof useMotionValue<number>>;
+  visible: boolean;
+}) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
+  return createPortal(
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.94 }}
+          transition={{ duration: 0.15, ease: "easeOut" }}
+          style={{ x, y, position: "fixed", top: 0, left: 0 }}
+          className="pointer-events-none z-[200] w-52 rounded-xl overflow-hidden shadow-2xl ring-1 ring-black/10"
+        >
+          <img src={src} alt="" className="w-full h-auto block" />
+        </motion.div>
+      )}
+    </AnimatePresence>,
+    document.body
+  );
+}
+
 function ProjectCard({
   project,
   index,
@@ -64,6 +100,13 @@ function ProjectCard({
   const rotateY = useSpring(rawRotateY, { stiffness: 200, damping: 18 });
   const liftY = useSpring(rawY, { stiffness: 300, damping: 20 });
 
+  const preview = "preview" in project ? project.preview : undefined;
+  const [previewVisible, setPreviewVisible] = useState(false);
+  const rawPreviewX = useMotionValue(0);
+  const rawPreviewY = useMotionValue(0);
+  const previewX = useSpring(rawPreviewX, { stiffness: 400, damping: 40 });
+  const previewY = useSpring(rawPreviewY, { stiffness: 400, damping: 40 });
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = cardRef.current?.getBoundingClientRect();
     if (!rect) return;
@@ -71,14 +114,27 @@ function ProjectCard({
     const py = (e.clientY - rect.top) / rect.height - 0.5;
     rawRotateY.set(px * 8);
     rawRotateX.set(-py * 8);
+
+    if (preview) {
+      rawPreviewX.set(e.clientX + 22);
+      rawPreviewY.set(e.clientY - 130);
+    }
   };
 
-  const handleMouseEnter = () => rawY.set(-4);
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    rawY.set(-4);
+    if (preview) {
+      rawPreviewX.set(e.clientX + 22);
+      rawPreviewY.set(e.clientY - 130);
+      setPreviewVisible(true);
+    }
+  };
 
   const handleMouseLeave = () => {
     rawRotateX.set(0);
     rawRotateY.set(0);
     rawY.set(0);
+    setPreviewVisible(false);
   };
 
   return (
@@ -95,6 +151,9 @@ function ProjectCard({
       style={{ rotateX, rotateY, y: liftY, transformStyle: "preserve-3d" }}
       className={`group flex flex-col border border-zinc-200 rounded-xl p-5 bg-white hover:shadow-md hover:shadow-amber-900/5 hover:border-amber-300 transition-[box-shadow,border-color] duration-200 ${"stealth" in project && project.stealth ? "opacity-60" : ""}`}
     >
+      {preview && (
+        <HoverPreview src={preview} x={previewX} y={previewY} visible={previewVisible} />
+      )}
       <div className="flex-1 min-w-0">
         <div className="flex flex-wrap items-center gap-2 mb-2">
           <h3 className="text-sm font-semibold text-zinc-900">
