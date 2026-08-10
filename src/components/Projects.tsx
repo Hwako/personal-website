@@ -6,11 +6,11 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
-    title: "Ummah",
+    title: "Minara",
     description:
-      "A Flutter app for discovering nearby mosques and halal restaurants. Distance-based sorting, place detail pages, and built-in prayer time & Qibla direction using GPS or manual address search.",
-    tags: ["Flutter", "Dart", "Google Maps API", "Material 3"],
-    github: "https://github.com/Hwako/Ummah",
+      "A Flutter app that helps Muslims stay close to their community — discover and RSVP to local mosque events, browse a mosque directory, follow daily reflections, and access prayer times & Qibla direction, all in one place.",
+    tags: ["Flutter", "Dart", "Firebase", "Material 3"],
+    github: "https://github.com/Hwako/Minara",
     live: null,
     award: null,
   },
