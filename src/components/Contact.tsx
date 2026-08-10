@@ -73,7 +73,7 @@ export default function Contact() {
           className="mb-12"
         >
           <p className="text-zinc-400 font-mono text-xs tracking-widest uppercase mb-3">
-            / contact
+            <span className="text-amber-600">/</span> contact
           </p>
           <MagneticLink
             href="mailto:hwako@usc.edu"
@@ -82,7 +82,7 @@ export default function Contact() {
             className="group inline-block text-5xl sm:text-6xl md:text-7xl font-bold text-zinc-900 tracking-tight leading-none hover:text-zinc-500 transition-colors"
           >
             Let&apos;s talk
-            <span className="text-zinc-300 group-hover:text-zinc-400 transition-colors">.</span>
+            <span className="text-amber-500 group-hover:text-amber-600 transition-colors">.</span>
           </MagneticLink>
           <p className="mt-4 text-zinc-400 text-sm flex items-center gap-1.5">
             <ArrowDown size={13} className="animate-bounce" />
@@ -109,7 +109,7 @@ export default function Contact() {
                 className="group flex items-center justify-between py-4 hover:pl-1 transition-all duration-200"
               >
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:bg-zinc-900 group-hover:border-zinc-900 group-hover:text-white transition-colors">
+                  <div className="w-10 h-10 rounded-full bg-zinc-50 border border-zinc-200 flex items-center justify-center text-zinc-400 group-hover:bg-amber-600 group-hover:border-amber-600 group-hover:text-white transition-colors">
                     <social.Icon size={16} />
                   </div>
                   <div>
@@ -121,7 +121,7 @@ export default function Contact() {
                 </div>
                 <ArrowUpRight
                   size={15}
-                  className="text-zinc-300 group-hover:text-zinc-700 transition-colors"
+                  className="text-zinc-300 group-hover:text-amber-600 transition-colors"
                 />
               </MagneticLink>
             </motion.div>

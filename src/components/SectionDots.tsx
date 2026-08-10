@@ -48,7 +48,7 @@ export default function SectionDots() {
           <motion.span
             animate={{
               scale: active === s.id ? 1.3 : 1,
-              backgroundColor: active === s.id ? "#18181b" : "#d4d4d8",
+              backgroundColor: active === s.id ? "#d97706" : "#d4d4d8",
             }}
             transition={{ duration: 0.2 }}
             className="block w-1.5 h-1.5 rounded-full"

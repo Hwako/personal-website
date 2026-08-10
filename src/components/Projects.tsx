@@ -93,7 +93,7 @@ function ProjectCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, y: liftY, transformStyle: "preserve-3d" }}
-      className={`group flex flex-col border border-zinc-200 rounded-xl p-5 bg-white hover:shadow-md hover:border-zinc-300 transition-[box-shadow,border-color] duration-200 ${"stealth" in project && project.stealth ? "opacity-60" : ""}`}
+      className={`group flex flex-col border border-zinc-200 rounded-xl p-5 bg-white hover:shadow-md hover:shadow-amber-900/5 hover:border-amber-300 transition-[box-shadow,border-color] duration-200 ${"stealth" in project && project.stealth ? "opacity-60" : ""}`}
     >
       <div className="flex-1 min-w-0">
         <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -136,7 +136,7 @@ function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             data-cursor-text="View"
-            className="flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-900 transition-colors font-medium"
+            className="flex items-center gap-1 text-xs text-zinc-400 hover:text-amber-700 transition-colors font-medium"
           >
             GitHub <ArrowUpRight size={11} />
           </a>
@@ -147,7 +147,7 @@ function ProjectCard({
             target="_blank"
             rel="noopener noreferrer"
             data-cursor-text="View"
-            className="flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-900 transition-colors font-medium"
+            className="flex items-center gap-1 text-xs text-zinc-400 hover:text-amber-700 transition-colors font-medium"
           >
             Live <ArrowUpRight size={11} />
           </a>
@@ -173,7 +173,7 @@ export default function Projects() {
           className="mb-8"
         >
           <p className="text-zinc-400 font-mono text-xs tracking-widest uppercase mb-3">
-            / projects
+            <span className="text-amber-600">/</span> projects
           </p>
           <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
             Things I&apos;ve built

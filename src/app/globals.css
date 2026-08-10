@@ -17,8 +17,8 @@ body {
 }
 
 ::selection {
-  background: #0c0c0c;
-  color: #fafaf9;
+  background: #d97706;
+  color: #fffbeb;
 }
 
 .cursor-none-custom,

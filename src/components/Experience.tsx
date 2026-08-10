@@ -27,7 +27,7 @@ function CompanyLogo({
       src={logo}
       alt={name}
       onError={() => setFailed(true)}
-      className="w-9 h-9 rounded-lg object-contain border border-zinc-100 bg-white p-0.5 shrink-0"
+      className="w-9 h-9 rounded-lg object-contain border border-zinc-100 bg-white p-0.5 shrink-0 group-hover:border-amber-200 transition-colors"
     />
   );
 }
@@ -86,7 +86,7 @@ export default function Experience() {
           className="mb-8"
         >
           <p className="text-zinc-400 font-mono text-xs tracking-widest uppercase mb-3">
-            / experience
+            <span className="text-amber-600">/</span> experience
           </p>
           <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
             Where I&apos;ve been
@@ -102,9 +102,9 @@ export default function Experience() {
               viewport={{ once: true, margin: "-40px" }}
               variants={fadeUp}
               transition={{ duration: 0.4, delay: i * 0.07 }}
-              className="group relative py-4 border-b border-zinc-200 first:border-t"
+              className="group relative py-4 -mx-3 px-3 border-b border-zinc-200 first:border-t hover:bg-amber-50/40 transition-colors rounded-md"
             >
-              <span className="absolute left-[17px] top-0 bottom-0 w-px bg-zinc-200 z-0" aria-hidden />
+              <span className="absolute left-[20px] top-0 bottom-0 w-px bg-zinc-200 z-0" aria-hidden />
               <div className="relative z-10 flex items-start gap-3.5">
                 <CompanyLogo
                   logo={exp.logo}

@@ -24,21 +24,21 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="w-full px-6 md:px-10 h-16 flex items-center justify-between">
+      <nav className="w-full px-4 md:px-10 h-16 flex items-center justify-between">
         <motion.a
           href="#"
           whileHover={{ rotate: [0, -8, 8, -6, 6, 0] }}
           transition={{ duration: 0.4 }}
-          className="inline-block opacity-90 hover:opacity-70 transition-opacity"
+          className="inline-block opacity-90 hover:opacity-70 transition-opacity shrink-0"
         >
           <Image src="/logo.svg" alt="Hamza Wako" width={36} height={36} className="rounded-full" />
         </motion.a>
-        <div className="flex items-center gap-2 text-sm text-zinc-600">
+        <div className="flex items-center gap-0.5 sm:gap-2 text-[11px] sm:text-sm text-zinc-600">
           {["About", "Experience", "Projects", "Contact"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className="px-4 py-1.5 rounded-full bg-zinc-100/60 hover:bg-zinc-200/80 hover:text-zinc-900 transition-all duration-200"
+              className="px-2 sm:px-4 py-1.5 rounded-full bg-zinc-100/60 hover:bg-amber-50 hover:text-amber-800 transition-all duration-200 whitespace-nowrap"
             >
               {item}
             </a>
