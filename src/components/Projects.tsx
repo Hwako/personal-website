@@ -43,6 +43,7 @@ const projects = [
     github: null,
     live: null,
     award: null,
+    preview: ["/stealth-preview.jpg"],
     stealth: true,
   },
 ];
