@@ -14,7 +14,7 @@ const projects = [
     github: "https://github.com/Hwako/Minara",
     live: null,
     award: null,
-    preview: ["/minara-preview-1.jpg", "/minara-preview-2.jpg", "/minara-preview-3.jpg"],
+    preview: ["/minara-social-square.jpg", "/minara-social-story.jpg"],
   },
   {
     title: "SignSpace",
@@ -51,7 +51,7 @@ const cardFade = {
   visible: { opacity: 1, scale: 1 },
 };
 
-const PREVIEW_CYCLE_MS = 1400;
+const PREVIEW_CYCLE_MS = 2200;
 
 function HoverPreview({
   images,
@@ -91,7 +91,7 @@ function HoverPreview({
           style={{ x, y, position: "fixed", top: 0, left: 0 }}
           className="pointer-events-none z-[200] w-52 rounded-xl overflow-hidden shadow-2xl ring-1 ring-black/10 bg-zinc-900"
         >
-          <div className="relative aspect-[758/1027]">
+          <div className="relative aspect-[4/5]">
             <AnimatePresence initial={false}>
               <motion.img
                 key={images[index]}
@@ -101,7 +101,7 @@ function HoverPreview({
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35, ease: "easeInOut" }}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-contain"
               />
             </AnimatePresence>
           </div>
