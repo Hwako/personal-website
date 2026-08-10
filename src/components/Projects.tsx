@@ -24,6 +24,7 @@ const projects = [
     github: "https://github.com/mustafa-nom/SignSpace",
     live: null,
     award: "1st Place",
+    preview: ["/signspace-1.jpg", "/signspace-2.jpg", "/signspace-3.jpg"],
   },
   {
     title: "AI Research Agent",
