@@ -8,12 +8,6 @@ const HeroConstellation = dynamic(() => import("./HeroConstellation"), {
   ssr: false,
 });
 
-const skills = [
-  "Python", "SQL", "C++", "Machine Learning", "Data Visualization",
-  "Product Strategy", "Agile", "Cross-Team Collaboration", "Multilingual",
-  "Agentic AI", "MS Suite",
-];
-
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
@@ -75,6 +69,7 @@ export default function Intro() {
       id="about"
       className="relative py-24 md:py-32 px-6 md:px-16 overflow-hidden bg-[#fafaf9] border-b border-zinc-200"
     >
+      <div className="absolute -top-24 -right-24 w-[420px] h-[420px] bg-amber-200/30 rounded-full blur-[110px]" />
       <HeroConstellation />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#fafaf9]/50 to-[#fafaf9]" />
 
@@ -85,9 +80,9 @@ export default function Intro() {
           viewport={{ once: true, margin: "-60px" }}
           variants={fadeUp}
           transition={{ duration: 0.5 }}
-          className="text-zinc-400 font-mono text-xs tracking-widest uppercase mb-6"
+          className="flex w-fit items-center text-amber-700 font-mono text-[11px] font-bold tracking-widest uppercase bg-amber-50 border border-amber-200 rounded-full px-3 py-1 mb-6"
         >
-          <span className="text-amber-600">/</span> about
+          about
         </motion.p>
 
         <motion.div
@@ -99,7 +94,7 @@ export default function Intro() {
         >
           <TiltPhoto />
 
-          <span className="block text-[42px] md:text-[64px] font-bold text-zinc-900 tracking-tight leading-[0.95] mb-4 hover:text-amber-700 transition-colors w-fit">
+          <span className="font-[family-name:var(--font-display)] block text-[42px] md:text-[64px] font-bold text-zinc-900 tracking-tight leading-[0.95] mb-4 hover:text-amber-700 transition-colors w-fit">
             Hamza Wako.
           </span>
 
@@ -129,28 +124,6 @@ export default function Intro() {
             <span className="text-amber-600">·</span>
             <span className="text-zinc-800 font-semibold">Los Angeles</span>
           </div>
-        </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          variants={fadeUp}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mt-8 flex flex-wrap gap-1.5 clear-both"
-        >
-          {skills.map((skill, i) => (
-            <motion.span
-              key={skill}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.2, delay: i * 0.03 }}
-              className="px-2.5 py-1 bg-zinc-100 text-zinc-600 text-xs rounded-full hover:bg-amber-50 hover:text-amber-800 transition-colors cursor-default"
-            >
-              {skill}
-            </motion.span>
-          ))}
         </motion.div>
       </div>
     </section>

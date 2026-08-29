@@ -72,14 +72,14 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
           className="mb-12"
         >
-          <p className="text-zinc-400 font-mono text-xs tracking-widest uppercase mb-3">
-            <span className="text-amber-600">/</span> contact
+          <p className="flex w-fit items-center text-amber-700 font-mono text-[11px] font-bold tracking-widest uppercase bg-amber-50 border border-amber-200 rounded-full px-3 py-1 mb-4">
+            contact
           </p>
           <MagneticLink
             href="mailto:hwako@usc.edu"
             data-cursor-text="Say hi"
             strength={0.15}
-            className="group inline-block text-5xl sm:text-6xl md:text-7xl font-bold text-zinc-900 tracking-tight leading-none hover:text-zinc-500 transition-colors"
+            className="font-[family-name:var(--font-display)] group inline-block text-5xl sm:text-6xl md:text-7xl font-bold text-zinc-900 tracking-tight leading-none hover:text-zinc-500 transition-colors"
           >
             Let&apos;s talk
             <span className="text-amber-500 group-hover:text-amber-600 transition-colors">.</span>

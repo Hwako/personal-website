@@ -264,9 +264,10 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-16 px-6 md:px-16 bg-white border-b border-zinc-200"
+      className="relative py-16 px-6 md:px-16 overflow-hidden bg-white border-b border-zinc-200"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="absolute -top-40 right-0 w-[500px] h-[500px] bg-amber-50 rounded-full blur-[120px]" />
+      <div className="relative max-w-4xl mx-auto">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -275,13 +276,13 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <p className="text-zinc-400 font-mono text-xs tracking-widest uppercase mb-3">
-            <span className="text-amber-600">/</span> projects
+          <p className="flex w-fit items-center text-amber-700 font-mono text-[11px] font-bold tracking-widest uppercase bg-amber-50 border border-amber-200 rounded-full px-3 py-1 mb-4">
+            projects
           </p>
-          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-            Things I&apos;ve built
+          <h2 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-900 tracking-tight leading-[1.05]">
+            Things I&apos;ve <span className="text-amber-600">built</span>
           </h2>
-          <p className="mt-1.5 text-zinc-400 text-sm max-w-md">
+          <p className="mt-2 text-zinc-400 text-sm max-w-md">
             Data, product, and software. Some for class, some for fun, one in the oven.
           </p>
         </motion.div>

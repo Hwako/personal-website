@@ -32,6 +32,12 @@ function CompanyLogo({
   );
 }
 
+const skills = [
+  "Python", "SQL", "C++", "Machine Learning", "Data Visualization",
+  "Product Strategy", "Agile", "Cross-Team Collaboration", "Multilingual",
+  "Agentic AI", "MS Suite",
+];
+
 const experiences = [
   {
     role: "Data Analyst",
@@ -74,9 +80,10 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="py-16 px-6 md:px-16 bg-[#fafaf9] border-b border-zinc-200"
+      className="relative py-16 px-6 md:px-16 overflow-hidden bg-gradient-to-b from-[#fafaf9] via-[#fdf6ec] to-[#fafaf9] border-b border-zinc-200"
     >
-      <div className="max-w-4xl mx-auto">
+      <div className="absolute top-1/3 -left-32 w-[380px] h-[380px] bg-amber-100/50 rounded-full blur-[100px]" />
+      <div className="relative max-w-4xl mx-auto">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -85,11 +92,11 @@ export default function Experience() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <p className="text-zinc-400 font-mono text-xs tracking-widest uppercase mb-3">
-            <span className="text-amber-600">/</span> experience
+          <p className="flex w-fit items-center text-amber-700 font-mono text-[11px] font-bold tracking-widest uppercase bg-amber-50 border border-amber-200 rounded-full px-3 py-1 mb-4">
+            experience
           </p>
-          <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
-            Where I&apos;ve been
+          <h2 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-900 tracking-tight leading-[1.05]">
+            Where I&apos;ve <span className="text-amber-600">been</span>
           </h2>
         </motion.div>
 
@@ -133,6 +140,33 @@ export default function Experience() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={fadeUp}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="mt-10"
+        >
+          <p className="text-zinc-400 font-mono text-xs tracking-widest uppercase mb-3">
+            Skills
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {skills.map((skill, i) => (
+              <motion.span
+                key={skill}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.2, delay: i * 0.03 }}
+                className="px-2.5 py-1 bg-zinc-100 text-zinc-600 text-xs rounded-full hover:bg-amber-50 hover:text-amber-800 transition-colors cursor-default"
+              >
+                {skill}
+              </motion.span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
