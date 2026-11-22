@@ -29,7 +29,6 @@ export default function Home() {
             <p className="identity-role">AI / Product / Data</p>
             <p className="identity-bio">I love building and using AI to bring ideas to life. Anything involving creativity, vision, or photography, I’m all ears.</p>
             <div className="identity-meta"><span>Los Angeles, CA</span><span className="school-detail"><Image src="/logos/usc.png" alt="USC" width={32} height={13} /> &apos;27 <span>· Data Science</span></span></div>
-            <nav className="section-nav" aria-label="Sections"><a href="#projects">Projects <span>↘</span></a><a href="#experience">Experience <span>↘</span></a></nav>
             <nav className="social-links" aria-label="Social links">
               <a href="https://github.com/Hwako" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub"><GitHubIcon /></a>
               <a href="https://linkedin.com/in/hwako1" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn"><LinkedInIcon /></a>
@@ -55,7 +54,6 @@ export default function Home() {
             </div>
           </section>
 
-          <footer className="content-footer"><a href="#top">Back to top ↑</a></footer>
         </div>
       </main>
     </>
